@@ -8,12 +8,13 @@ jobs:
       tag: 14.15.1
     steps:
     - checkout
-    - node/install-packages:
-        pkg-manager: npm
-    - run:
-      command: npm run test
-      name: Run Mocha tests
+    - run: npm install
+    - run: npm run build
+    - run: npm run test
+    - run: npm run coverage
+    - run: npm run make-badges
 workflows:
-node-tests:
+version: 2.1
+build:
   jobs:
     test
