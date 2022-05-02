@@ -6,6 +6,9 @@
   "scripts": {
     "start": "nodemon ./src/index.js",
     "test": "nyc --reporter=html --reporter=text mocha ./src/tests/*.test.js --timeout 10000 --exit",
+    "build-babel": "babel -d ./build ./src -s",
+    "clean": "rm -rf build && mkdir build",
+    "build": "npm run clean && npm run build-babel",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -20,6 +23,7 @@
   },
   "homepage": "https://github.com/habaumugisha1/ci-cd#readme",
   "dependencies": {
+    "@babel/cli": "^7.17.10",
     "body-parser": "^1.20.0",
     "chai": "^4.3.6",
     "chai-http": "^4.3.0",
